@@ -52,8 +52,15 @@
           password
         },
         success:function(res){
+          //只有管理员才可以进入到后台首页
+          console.log(res)
           //跳转到后台首页
-          location.href = 'index.html'
+          if(res.role == 'admin'){
+            location.href = '/admin/index.html'
+          }else{
+            //说明是普通用户，跳转到前台首页
+            location.href = '/index.html';
+          }
         },
         error:function(){
           alert('邮箱或密码错误')
